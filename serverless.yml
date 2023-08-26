@@ -1,0 +1,24 @@
+
+
+service: newserverless
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+
+functions:
+  earthToMarsTrasnlation:
+    handler: earthToMarsCommunication.handler
+    events:
+    - http:
+        path: api/earth-mars-comm/message
+        method: POST
+
+  marsToEarthTranslation:
+    handler: marsToEarthCommunication.handler
+    events:
+    - http:
+        path: api/mars-earth-comm/message
+        method: POST
+    
